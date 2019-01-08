@@ -34,7 +34,11 @@ Cenário: Aceitar termos e validar valor total da compra
 Dado que eu esteja na tela de endereços
 E prossiga para o checkout
 Quando aceitar os termos de serviço da entrega e prosseguir para o checkout
-Então verifico o se o valor da <compra> + o valor de <entrega> é calculado com sucesso
+E verificar se o valor da compra + o valor de entrega é calculado com sucesso no total
+E selecionar um metodo de pagamento
+Entao confirmo a compra e valido se foi finalizada com sucesso
+
+
 
 
 
