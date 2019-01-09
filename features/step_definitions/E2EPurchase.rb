@@ -1,86 +1,68 @@
 Dado("que eu esteja no site de compras") do
-    visit('/') 
+    visit('/index.php?id_product=3&controller=product') 
   end
   
   Dado("escolha o primeiro produto da pagina inicial") do
-    find('#1').click
+    find('#add_to_cart').click
+    sleep 2
+    
+  end
+
+  Quando("coloco o produto no carrinho de compra e vou para checkout") do
+    click_on('Proceed to checkout')
+  end
+  
+  Quando("verifico que meu produto foi adicionado corretamente") do
+    page.has_text?('Printed Dress')
+    click_on('Proceed to checkout')
+  end
+  
+  Quando("que eu esteja na pagina de cadastro") do
+    find('#email_create').set("lucasneto@gmaill.com")
+    sleep 1
+    find('#SubmitCreate').click
+  end
+  
+  Quando("preencho os campos obrigatorios de cadastro") do
+    
+    find('#customer_firstname').set("Primeiro")
+    find('#customer_lastname').set("Segundo")
+    find('#passwd').set("123456")
+    find('#address1').set("ruaum")
+    find('#city').set("sao paulo")
+    find('#postcode').set("00000")  
+    find('#phone_mobile').set("11964879085")
+    find('#uniform-id_state').click
+    select 'Alabama'
+    click_on('Register')
     sleep 3
+  end
+  
+  Quando("após confirmar verifico se os dados foram inseridos corretamente") do
+    page.has_text?("Primeiro","Segundo")
     
   end
   
-  Quando("coloco o produto no carrinho de compra e vou para checkout") do
-    pending # Write code here that turns the phrase above into concrete actions
-  end
-  
-  Então("verifico que meu produto foi adicionado corretamente") do
-    pending # Write code here that turns the phrase above into concrete actions
-  end
-  
-  Dado("que eu esteja na pagina de cadastro") do
-    pending # Write code here that turns the phrase above into concrete actions
-  end
-  
-  Quando("preencho o campo de primeiro nome com Lucas") do
-    pending # Write code here that turns the phrase above into concrete actions
-  end
-  
-  Quando("o campo último nome com Silva") do
-    pending # Write code here that turns the phrase above into concrete actions
-  end
-  
-  Quando("o campo de senha com {int}") do |int|
-    pending # Write code here that turns the phrase above into concrete actions
-  end
-  
-  Quando("o campo de endereço com RuaUM") do
-    pending # Write code here that turns the phrase above into concrete actions
-  end
-  
-  Quando("o campo de cidade com São Paulo") do
-    pending # Write code here that turns the phrase above into concrete actions
-  end
-  
-  Quando("o campo de estado com Virginia") do
-    pending # Write code here that turns the phrase above into concrete actions
-  end
-  
-  Quando("o campo de cep com {int}") do |int|
-    pending # Write code here that turns the phrase above into concrete actions
-  end
-  
-  Quando("o campo de telefone com {int}") do |int|
-    pending # Write code here that turns the phrase above into concrete actions
-  end
-  
-  Quando("o campo de nome de endereço com Endereço {int}") do |int|
-    pending # Write code here that turns the phrase above into concrete actions
-  end
-  
-  Então("após confirmar verifico se os dados foram inseridos corretamente") do
-    pending # Write code here that turns the phrase above into concrete actions
-  end
-  
-  Dado("que eu esteja na tela de endereços") do
-    pending # Write code here that turns the phrase above into concrete actions
-  end
-  
-  Dado("prossiga para o checkout") do
-    pending # Write code here that turns the phrase above into concrete actions
+  Quando("prossiga para o checkout") do
+    click_on('Proceed to checkout')
+    
   end
   
   Quando("aceitar os termos de serviço da entrega e prosseguir para o checkout") do
-    pending # Write code here that turns the phrase above into concrete actions
-  end
-  
-  Quando("verificar se o valor da compra + o valor de entrega é calculado com sucesso no total") do
-    pending # Write code here that turns the phrase above into concrete actions
+    page.has_text?("SHIPPING")
+    find('.checker').click
+    click_on('Proceed to checkout')
   end
   
   Quando("selecionar um metodo de pagamento") do
-    pending # Write code here that turns the phrase above into concrete actions
+    page.has_text?('$28.00')
+    find('.bankwire').click
   end
   
   Entao("confirmo a compra e valido se foi finalizada com sucesso") do
-    pending # Write code here that turns the phrase above into concrete actions
+    find('.button.btn.btn-default.button-medium').click
+    page.has_text?('Your order on My Store is complete.')
+    sleep 2
+
   end
   
