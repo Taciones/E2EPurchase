@@ -1,4 +1,4 @@
-Dado("que eu esteja no site de compras") do
+﻿Dado("que eu esteja no site de compras") do
     visit('/index.php?id_product=3&controller=product') 
   end
   
@@ -18,7 +18,7 @@ Dado("que eu esteja no site de compras") do
   end
   
   Quando("que eu esteja na pagina de cadastro") do
-    find('#email_create').set("lucasneto@gmaill.com")
+    find('#email_create').set("teste11@ggmaill.com")
     sleep 1
     find('#SubmitCreate').click
   end
