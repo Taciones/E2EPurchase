@@ -18,7 +18,7 @@
   end
   
   Quando("que eu esteja na pagina de cadastro") do
-    find('#email_create').set("teste11@ggmaill.com")
+    find('#email_create').set("tes11@gmaill.com")
     sleep 1
     find('#SubmitCreate').click
   end
